@@ -3,13 +3,16 @@ import App from './App.vue'
 import router from './router'
 import './registerServiceWorker'
 import axios from "axios";
-//import VueCountdown from '@chenfengyuan/vue-countdown';
 import vuetify from './plugins/vuetify';
 
 
 Vue.config.productionTip = false
+// const base = axios.create({
+//   baseURL: "http://10.42.0.1:4000",
+//   //timeout:50000
+// });
 const base = axios.create({
-  baseURL: "http://10.42.0.1:4000",
+  baseURL: "http://localhost:4000",
   //timeout:50000
 });
 

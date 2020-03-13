@@ -50,7 +50,7 @@
               @click="completedDeadline(i)"
               :disabled="c.completedDeadline == false"
               :hidden="!c.completedDeadline"
-            >Update</v-btn>-->
+            >Update</v-btn> -->
           </v-toolbar>
           <v-card-text>
             <p style="text-align:center">

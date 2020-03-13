@@ -306,19 +306,18 @@ export default {
   },
   mounted() {
     this.$refs.calendar.checkChange();
-    this.getAllClients();
-    this.updateRange();
-
     if (localStorage.getItem("jwt")) {
       this.loggedinUser = localStorage.getItem("jwt");
       this.reg.loggedinUser = this.loggedinUser;
+      this.getAllClients();
+      this.getEvents();
     }
   },
   async created() {
     await setInterval(() => {
       this.getAllClients();
-      this.updateRange();
-    }, 1000);
+      this.getEvents();
+    }, 5000);
     //this.updateRange();
   },
   methods: {
@@ -373,18 +372,24 @@ export default {
         this.addpeople = false;
       } catch (error) {}
     },
-    updateRange() {
+    updateRange({ start, end }) {
+      this.start = start;
+      this.end = end;
+    },
+    async getEvents() {
       const events = [];
 
       for (let i = 0; i < this.details.length && i < this.colors.length; i++) {
         const e = this.details[i];
-        const el = this.colors[i];
+        const el = this.colors[this.rnd(0, this.colors.length - 1)];
         const formatFirstDate = e.calenderStartTime.substr(0, 10);
         const formatFirstTime = e.calenderStartTime.substr(11, 5);
         const firstTime = new Date(`${formatFirstDate} ${formatFirstTime}`);
         const formatSecondDate = e.calenderEndTime.substr(0, 10);
         const formatSecondTime = e.calenderEndTime.substr(11, 5);
         const secondTime = new Date(`${formatSecondDate} ${formatSecondTime}`);
+
+        // this.colors[this.rnd(0, this.colors.length - 1)],
 
         events.push({
           name: e.name,

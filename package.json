@@ -15,7 +15,7 @@
     "@fullcalendar/core": "^4.4.0",
     "@fullcalendar/daygrid": "^4.4.0",
     "@fullcalendar/vue": "^4.4.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "connect-mongo": "^3.2.0",
     "core-js": "^2.6.5",
     "countdown": "^2.6.0",
